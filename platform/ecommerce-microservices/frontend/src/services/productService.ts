@@ -7,7 +7,7 @@ const getImageUrl = (product: any): string => {
   if (product.image_url) {
     return product.image_url;
   }
-  
+
   // Default fallback
   return '/product-images/placeholder.jpg';
 };
@@ -18,7 +18,7 @@ export const productService = {
     try {
       const response = await apiClient.get('/products');
       const apiResponse = response.data;
-      
+
       // Transform API response to match frontend types
       if (apiResponse.success && apiResponse.data?.products) {
         console.log('[ProductService] Using wrapped response format');
@@ -42,7 +42,7 @@ export const productService = {
           };
         });
       }
-      
+
       // Fallback for direct array response
       console.log('[ProductService] Using fallback array format');
       return Array.isArray(apiResponse) ? apiResponse.map((product: any) => ({
@@ -75,7 +75,7 @@ export const productService = {
     try {
       const response = await apiClient.get(`/products/${id}`);
       const product = response.data.data || response.data;
-      
+
       // Transform API response to match frontend types
       return {
         id: product.id,
