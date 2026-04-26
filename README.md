@@ -1,138 +1,55 @@
-# DevOps + AIOps Series
+# Cloud Native DevOps & AIOps Platform
 
-> A full end-to-end DevOps project with AIOps integration — so you can connect the dots between how AI is helping automate DevOps tasks today.
+This repository contains a comprehensive, production-grade E-Commerce Microservices platform designed for Cloud Native deployment using DevOps and AIOps best practices.
 
----
+## 🚀 Project Overview
 
-## Welcome
+The platform is a boutique e-commerce application consisting of 7 distinct microservices, a central PostgreSQL database, and a full observability stack (Prometheus, Grafana). It is designed to be deployed both locally for development and to AWS EKS for production.
 
-Hey everyone!
+### Key Features
+- **Microservices Architecture**: 7 Decoupled services (Auth, Product, Order, User, Gateway, Order-Management, Orders).
+- **Frontend**: Modern React application with a luxury fashion aesthetic.
+- **Infrastructure as Code**: Fully automated EKS cluster provisioning using Terraform.
+- **GitOps**: Automated deployments and synchronization using ArgoCD (provisioned via Helm).
+- **CI/CD Pipeline**: GitHub Actions workflow for automated Docker builds, ECR pushing, and K8s manifest updates.
+- **Observability**: Real-time metrics collection with Prometheus and visualization with Grafana.
+- **Asset Rebranding**: High-resolution, AI-generated men's luxury fashion catalog.
 
-Welcome to my DevOps + AI series where we build an end-to-end DevOps project with an AIOps integration.
+## 📂 Project Structure
 
-A lot of you have been asking: *"when are you going to share a full DevOps project?"*
-
-Well — here we are.
-
-In this series we will:
-
-- Build microservices locally
-- Use Claude and AI tools to assist development
-- Deploy everything step by step
-- Migrate the system to the cloud on AWS EKS
-- Set up a full CI/CD pipeline with GitHub Actions
-- Implement GitOps workflows with ArgoCD
-- Integrate AIOps capabilities with AWS Bedrock
-
-By the end of this series, you won't just know tools — you'll understand how real DevOps systems are designed and deployed.
-
----
-
-## Repository Structure
-
-```
-DevOps-Practice-Guide/
-├── docs/
-│   ├── part1-system-design.md     # System design foundations (Part 1)
-│   ├── part2-workflow.md          # Full workflow with AIOps (Part 2)
-│   └── claude-setup.md            # Claude Code + MCP server setup
+```text
+.
 ├── platform/
-│   ├── README.md                  # EKS deployment guide (Part 3)
-│   ├── ecommerce-microservices/    # The application (7 services)
-│   ├── Infrastructure/            # Terraform for AWS provisioning
-│   └── aiops-assistant/           # Bedrock Agent — Kira (Part 4)
-├── gitops/
-│   ├── argo-cd.yml                # ArgoCD Application manifest
-│   ├── kustomization.yml          # Kustomize entry point
-│   └── k8s/                       # All Kubernetes manifests
-└── .github/
-    └── workflows/ci.yml           # GitHub Actions CI pipeline
+│   ├── ecommerce-microservices/  # Application source code & Docker Compose
+│   └── Infrastructure/           # Terraform modules (EKS, VPC, ECR, ArgoCD)
+├── gitops/                       # Kubernetes manifests (Kustomize) & ArgoCD Apps
+├── .github/workflows/            # GitHub Actions CI/CD Pipeline
+└── Issues.md                     # Comprehensive Troubleshooting Guide
 ```
 
----
+## 🛠️ Quick Start
 
-## Series Structure
+### Local Development (Docker Compose)
+1. Navigate to the microservices directory:
+   ```bash
+   cd platform/ecommerce-microservices
+   ```
+2. Build and start the environment:
+   ```bash
+   docker-compose up -d --build
+   ```
+3. Access the application:
+   - Frontend: `http://localhost:3000`
+   - Gateway API: `http://localhost:3001`
+   - Prometheus: `http://localhost:9090`
+   - Grafana: `http://localhost:3007` (admin/admin)
 
-### Part 1 — System Design Foundations
-[`docs/part1-system-design.md`](docs/part1-system-design.md)
+### Cloud Deployment (AWS EKS)
+The project is configured for a full GitOps flow on AWS EKS. Detailed instructions for provisioning infrastructure and deploying via ArgoCD can be found in [platform/README.md](platform/README.md).
 
-We start with system design concepts specifically for cloud and DevOps. This is important whether you're a beginner, intermediate, or senior engineer — because companies don't choose tools randomly. They think about architecture patterns, deployment strategies, scalability, reliability, and cost tradeoffs.
-
-We cover 12 core system design pillars used in modern DevOps architectures, and connect each one directly to something running in this project.
-
----
-
-### Part 2 — Understanding the Workflow
-[`docs/part2-workflow.md`](docs/part2-workflow.md)
-
-Before writing any code or deployment configs, you need to understand how the entire system flows:
-
-- What services we're building and how they communicate
-- How the pipeline works
-- How code moves from developer → CI → deployment → production → AIOps
-
-This is where the full picture comes together — including how AI fits into the workflow.
-
----
-
-### Part 3 — DevOps Project Implementation
-[`platform/README.md`](platform/README.md)
-
-Then we actually build the project. You'll see:
-
-- Docker containers and Docker Compose
-- Kubernetes deployments on EKS
-- CI/CD pipelines with GitHub Actions
-- GitOps automation with ArgoCD
-- Infrastructure provisioning with Terraform
-- Observability with Prometheus and Grafana
-
----
-
-### Part 4 — AIOps Integration
-[`platform/aiops-assistant/README.md`](platform/aiops-assistant/README.md)
-
-Finally, we explore how AI helps with:
-
-- Monitoring and anomaly detection
-- Log analysis at scale
-- Incident response automation
-- DevOps troubleshooting
-
-Because modern DevOps is no longer just automation — it's **automation + intelligence**.
-
----
-
-## Bonus Challenge
-
-You'll get access to this entire repository.
-
-But there's a catch.
-
-The repository includes **intentional issues and troubleshooting tasks**.
-
-Why? Because AI has made things easier. But if you want to grow as an engineer, you must learn how to break systems, debug systems, and fix systems.
-
-Once you implement the project:
-
-1. Fork the repository
-2. Deploy the system
-3. Troubleshoot the issues
-4. Share what you learned — and tag me so I know you're building along
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Application | React, Node.js, PostgreSQL |
-| Containers | Docker, Docker Compose |
-| Orchestration | Kubernetes (AWS EKS) |
-| Infrastructure | Terraform |
-| CI/CD | GitHub Actions |
-| GitOps | ArgoCD + Kustomize |
-| Monitoring | Prometheus + Grafana |
-| Log Forwarding | AWS Fluent Bit → CloudWatch |
-| AIOps | AWS Bedrock Agent (Kira) |
-| AI Assistant | Claude Code + MCP Servers |
+## 📊 CI/CD Flow
+1. **Developer pushes code** to `main`.
+2. **GitHub Actions** triggers a multi-service build.
+3. **Docker Images** are pushed to Amazon ECR with the commit SHA as the tag.
+4. **Manifests Update**: The CI job automatically updates `gitops/k8s/` manifests with the new image tags.
+5. **ArgoCD** detects the change in Git and synchronizes the EKS cluster to the new version.
