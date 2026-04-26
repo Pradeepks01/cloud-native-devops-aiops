@@ -40,7 +40,7 @@ const Layout: React.FC = () => {
     <Box>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          ecommerce
+          ECOMMERCE
         </Typography>
       </Toolbar>
       <List>
@@ -96,7 +96,7 @@ const Layout: React.FC = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Luxury ecommerce
+            Luxury Ecommerce
           </Typography>
           <IconButton color="inherit" onClick={() => navigate('/cart')}>
             <Badge badgeContent={itemCount} color="error">
