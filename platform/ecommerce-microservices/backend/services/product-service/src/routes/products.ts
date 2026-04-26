@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     const limitNum = parseInt(limit as string);
     const offset = (pageNum - 1) * limitNum;
 
-let whereClause = 'WHERE 1=1';
+    let whereClause = 'WHERE 1=1';
     const filterParams: any[] = [];
     let paramIndex = 1;
 
@@ -54,11 +54,11 @@ let whereClause = 'WHERE 1=1';
              p.brand, p.inventory_quantity, p.is_featured, p.created_at, p.updated_at,
              COALESCE(c.name, 'Uncategorized') as category,
              CASE 
-               WHEN p.name ILIKE '%suit%' OR p.name ILIKE '%blazer%' THEN '/product-images/mens-suit.png'
-               WHEN p.name ILIKE '%coat%' OR p.name ILIKE '%jacket%' THEN '/product-images/mens-coat.png'
-               WHEN p.name ILIKE '%wallet%' OR p.name ILIKE '%bag%' THEN '/product-images/mens-suit.png'
-               WHEN p.name ILIKE '%watch%' OR p.name ILIKE '%tie%' THEN '/product-images/mens-coat.png'
-               WHEN p.name ILIKE '%boots%' OR p.name ILIKE '%shoes%' THEN '/product-images/mens-suit.png'
+               WHEN p.name ILIKE '%gown%' OR p.name ILIKE '%dress%' THEN '/product-images/silk-evening-gown.jpg'
+               WHEN p.name ILIKE '%coat%' OR p.name ILIKE '%cashmere%' THEN '/product-images/cashmere-coat.jpg'
+               WHEN p.name ILIKE '%handbag%' OR p.name ILIKE '%bag%' THEN '/product-images/leather-handbag.jpg'
+               WHEN p.name ILIKE '%necklace%' OR p.name ILIKE '%jewelry%' THEN '/product-images/diamond-necklace.jpg'
+               WHEN p.name ILIKE '%heels%' OR p.name ILIKE '%shoes%' THEN '/product-images/designer-heels.jpg'
                ELSE '/product-images/placeholder.jpg'
              END as image_url
       FROM products p
@@ -69,7 +69,7 @@ let whereClause = 'WHERE 1=1';
     `;
 
     const allParams = [...filterParams, limitNum, offset];
-    
+
     const [countResult, productsResult] = await Promise.all([
       query(countQuery, filterParams),
       query(productsQuery, allParams)
@@ -108,11 +108,11 @@ router.get('/:id', async (req, res) => {
              p.brand, p.inventory_quantity, p.is_featured, p.created_at, p.updated_at,
              COALESCE(c.name, 'Uncategorized') as category,
              CASE 
-               WHEN p.name ILIKE '%suit%' OR p.name ILIKE '%blazer%' THEN '/product-images/mens-suit.png'
-               WHEN p.name ILIKE '%coat%' OR p.name ILIKE '%jacket%' THEN '/product-images/mens-coat.png'
-               WHEN p.name ILIKE '%wallet%' OR p.name ILIKE '%bag%' THEN '/product-images/mens-suit.png'
-               WHEN p.name ILIKE '%watch%' OR p.name ILIKE '%tie%' THEN '/product-images/mens-coat.png'
-               WHEN p.name ILIKE '%boots%' OR p.name ILIKE '%shoes%' THEN '/product-images/mens-suit.png'
+               WHEN p.name ILIKE '%gown%' OR p.name ILIKE '%dress%' THEN '/product-images/silk-evening-gown.jpg'
+               WHEN p.name ILIKE '%coat%' OR p.name ILIKE '%cashmere%' THEN '/product-images/cashmere-coat.jpg'
+               WHEN p.name ILIKE '%handbag%' OR p.name ILIKE '%bag%' THEN '/product-images/leather-handbag.jpg'
+               WHEN p.name ILIKE '%necklace%' OR p.name ILIKE '%jewelry%' THEN '/product-images/diamond-necklace.jpg'
+               WHEN p.name ILIKE '%heels%' OR p.name ILIKE '%shoes%' THEN '/product-images/designer-heels.jpg'
                ELSE '/product-images/placeholder.jpg'
              END as image_url
       FROM products p
