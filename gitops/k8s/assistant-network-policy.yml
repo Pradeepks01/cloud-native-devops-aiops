@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: aiops-assistant-policy
+  namespace: aiops
+spec:
+  podSelector:
+    matchLabels:
+      app: aiops-assistant
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 0.0.0.0/0 # Allow ingress from anywhere for the UI (LoadBalancer)
+    ports:
+    - protocol: TCP
+      port: 8501
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0 # Allow egress for AWS API calls
