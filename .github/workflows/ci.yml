@@ -23,6 +23,7 @@ jobs:
           - product-service
           - user-service
           - frontend
+          - assistant
 
     steps:
       - name: Checkout Code
@@ -45,6 +46,8 @@ jobs:
         run: |
           if [ "${{ matrix.service }}" == "frontend" ]; then
             BUILD_PATH="platform/ecommerce-microservices/frontend"
+          elif [ "${{ matrix.service }}" == "assistant" ]; then
+            BUILD_PATH="aiops-assistant"
           else
             BUILD_PATH="platform/ecommerce-microservices/backend/services/${{ matrix.service }}"
           fi
