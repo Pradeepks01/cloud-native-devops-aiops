@@ -13,9 +13,8 @@ $services = @(
     "assistant"
 )
 
-# Get current AWS region
-$region = aws configure get region
-if (-not $region) { $region = "eu-north-1" }
+# Force region to us-east-1 to match project infrastructure
+$region = "us-east-1"
 
 Write-Host "Creating ECR repositories in region: $region..." -ForegroundColor Cyan
 
