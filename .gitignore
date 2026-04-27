@@ -27,7 +27,6 @@ Thumbs.db
 *.kubeconfig
 
 # Docker
-.dockerignore
 
 # Logs
 *.log
