@@ -37,5 +37,8 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: ./aiops-assistant
+        file: ./aiops-assistant/Dockerfile
         push: false
         tags: aiops-assistant:test
+        cache-from: type=gha
+        cache-to: type=gha,mode=max

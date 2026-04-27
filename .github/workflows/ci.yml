@@ -80,8 +80,12 @@ jobs:
           ACCOUNT=${{ secrets.AWS_ACCOUNT_ID }}
           REGION=${{ secrets.AWS_REGION }}
 
-          for SERVICE in auth gateway orders order-service product-service user-service; do
-            MANIFEST="gitops/k8s/backend/${SERVICE}.yml"
+          for SERVICE in auth gateway orders order-service product-service user-service assistant; do
+            if [ "$SERVICE" == "assistant" ]; then
+              MANIFEST="gitops/k8s/assistant-deployment.yml"
+            else
+              MANIFEST="gitops/k8s/backend/${SERVICE}.yml"
+            fi
             sed -i "s|${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${SERVICE}:.*|${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${SERVICE}:${NEW_TAG}|g" $MANIFEST
           done
 
