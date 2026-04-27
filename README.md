@@ -41,11 +41,6 @@ graph TD
     Gateway --> MS
     MS --> DB
 ```
-
-> **⚠️ Strict Networking Note:** Based exactly on the Kubernetes manifests in `/gitops/k8s`, the `frontend` and `gateway` services are currently configured as `type: ClusterIP`. This means the actual e-commerce web application is **internal only** and not exposed to the internet. 
-> 
-> The **only** service exposed externally in this configuration is the `aiops-assistant` (via a `LoadBalancer` on port 80). There are currently **no** Kubernetes `Ingress` resources defined in the code.
-
 ---
 
 ## 🏗️ Project Components
