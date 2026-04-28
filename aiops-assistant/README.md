@@ -1,8 +1,8 @@
-# ⚡ Kira: AIOps Assistant
+# ⚡ Logira: AIOps Assistant
 
-Kira is a Generative AI-powered operational assistant designed to reduce Mean Time To Resolution (MTTR) by providing a natural language interface for Root Cause Analysis (RCA).
+Logira is a Generative AI-powered operational assistant designed to reduce Mean Time To Resolution (MTTR) by providing a natural language interface for Root Cause Analysis (RCA).
 
-Built with Python and Streamlit, Kira connects to an AWS Bedrock Agent to autonomously query system health, logs, and metrics across your cloud-native infrastructure.
+Built with Python and Streamlit, Logira connects to an AWS Bedrock Agent to autonomously query system health, logs, and metrics across your cloud-native infrastructure.
 
 ## 🏗️ Assistant Architecture
 

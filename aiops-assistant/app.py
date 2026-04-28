@@ -31,7 +31,7 @@ AGENT_ALIAS_ID = os.getenv("BEDROCK_AGENT_ALIAS_ID")
 
 # --- Page Config ---
 st.set_page_config(
-    page_title="Kira — AIOps Assistant",
+    page_title="Logira — AIOps Assistant",
     page_icon="🔍",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -207,7 +207,7 @@ def invoke_agent(prompt: str) -> str:
 # --- Header ---
 st.markdown("""
 <div class="main-header">
-    <h1>⚡ KIRA</h1>
+    <h1>⚡ Logira</h1>
     <p>AIOps Assistant — Root Cause Analysis Engine</p>
 </div>
 """, unsafe_allow_html=True)
@@ -290,7 +290,7 @@ if prompt:
 
     # Get agent response
     with st.chat_message("assistant"):
-        with st.spinner("🔍 Kira is investigating..."):
+        with st.spinner("🔍 Logira is investigating..."):
             response = invoke_agent(prompt)
         st.markdown(response)
 
@@ -301,7 +301,7 @@ if prompt:
 with st.sidebar:
     st.markdown("""
     <div style="font-family: 'JetBrains Mono', monospace; padding: 1rem 0;">
-        <h3 style="color: #22d3ee; font-size: 1rem;">⚡ KIRA</h3>
+        <h3 style="color: #22d3ee; font-size: 1rem;">⚡ Logira</h3>
         <p style="color: #5a6270; font-size: 0.8rem;">AIOps Assistant v1.0</p>
     </div>
     """, unsafe_allow_html=True)

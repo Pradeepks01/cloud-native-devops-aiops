@@ -2,7 +2,7 @@
 
 Welcome to the **AIOps Cloud-Native E-Commerce Platform**. This project is a microservices-based web application deployed via GitOps on AWS Elastic Kubernetes Service (EKS).
 
-It features an **integrated Generative AI Operations (AIOps) assistant named Kira**, designed to perform automated Root Cause Analysis (RCA) by querying cluster metrics and logs.
+It features an **integrated Generative AI Operations (AIOps) assistant named Logira**, designed to perform automated Root Cause Analysis (RCA) by querying cluster metrics and logs.
 
 ---
 

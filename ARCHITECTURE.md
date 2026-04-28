@@ -15,7 +15,7 @@ The system consists of three primary domains:
 C4Context
     title System Context Diagram
     
-    Person(operator, "Platform Operator", "Uses Kira to diagnose issues")
+    Person(operator, "Platform Operator", "Uses Logira to diagnose issues")
     Person(customer, "Customer", "Browses and buys products")
     
     System_Boundary(aws, "AWS Cloud Environment") {
@@ -103,7 +103,7 @@ The platform strictly adheres to GitOps principles for CI/CD.
 
 ---
 
-## 5. AIOps Assistant Architecture (Kira)
+## 5. AIOps Assistant Architecture (Logira)
 
 The most innovative component is the AI Assistant (`/aiops-assistant`), designed to accelerate incident response.
 
